@@ -1,0 +1,11 @@
+[
+   ["do",
+      [["fn", ["x"], ["str", ["x"], " is here"]], "Tom"],
+      [ ["fn", [], "zwraca stałą"] ],
+      ["fn", [], "println"],
+      ["let", [
+         "wynik", [["fn", [], "to jest wynik zapisany pod let"]]
+      ], ["wynik"]],
+      ["println", ["fn", ["x"], ["str", ["x"], " is here"]]]
+   ]
+]

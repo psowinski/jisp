@@ -1,0 +1,10 @@
+[
+   {
+      "name": "John",
+      "size": 2.75,
+      "age": 30,
+      "city": [
+         "New York"
+      ]
+   }
+]

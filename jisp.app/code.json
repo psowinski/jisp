@@ -1,0 +1,63 @@
+[
+   "do",
+   [
+      "println",
+      "ala",
+      " ma",
+      " asa. ",
+      true,
+      " ",
+      false,
+      " ",
+      [
+         "a",
+         "b",
+         "c"
+      ],
+      " ",
+      {
+         "a1": "v1"
+      },
+      " ",
+      null,
+      " ",
+      [
+         "input"
+      ]
+   ],
+   [
+      "empty?",
+      [
+         10,
+         55
+      ]
+   ],
+   [
+      "empty?",
+      []
+   ],
+   [
+      "empty?",
+      {}
+   ],
+   [
+      "empty?",
+      ""
+   ],
+   [
+      "println",
+      "Generated numbers: ",
+      [
+         "generate-number",
+         "d",
+         "n"
+      ],
+      ", ",
+      [
+         "generate-number",
+         "d",
+         "n"
+      ]
+   ],
+   "this string is the last expresion"
+]
