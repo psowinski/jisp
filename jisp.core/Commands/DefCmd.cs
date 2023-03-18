@@ -9,7 +9,7 @@ public class DefCmd : IEveluator
          throw new Exception($"ERR: Expected definition name at {args.ToJistr()}");
 
       context = context.UpperContext(ContextType.App) ?? context;
-      context.Add(name, list[1]);
+      context.Add(name, list[1].EvaluateJisp(context));
       return Nil.Value;
    }
 }

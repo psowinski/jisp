@@ -12,6 +12,11 @@ internal class CoreContext : Context
 
    static CoreContext()
    {
-      Instance = new CoreContext(new CommandsProvider().Provide());
+      var cp = new CommandsProvider();
+      Instance = new CoreContext(cp.Provide());
+
+      var libText = Resources.GetTextFile("jisp.lib.json");
+      var libCode = JispParser.Parse(libText);
+      libCode.EvaluateJisp(Instance);
    }   
 }
