@@ -47,7 +47,7 @@ public static class Code
    private static string RunApp(object code, object input)
    {
       var appContext = new AppContext();
-      appContext.Add("input", input);
+      appContext.AddArgs(input);
 
       var numbering = new TestNumbering();
       appContext.Add("generate-number",
