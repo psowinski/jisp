@@ -1,6 +1,6 @@
 namespace Jisp.Core;
 
-internal class CoreContext : IContext
+internal class CoreContext : Context
 {
    public static CoreContext Instance { get; }
 

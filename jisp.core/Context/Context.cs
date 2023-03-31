@@ -1,19 +1,15 @@
 namespace Jisp.Core;
 
-class Context : IContext
+public class Context : IContext
 {
    private Dictionary<string, object> data = new ();
    public ContextType Type { get; }
    protected IContext? upper = null;
 
-   public Context(IContext upper) : this(ContextType.Local)
-   {
-      this.upper = upper;
-   }
-
-   protected Context(ContextType type)
+   protected Context(ContextType type, IContext? upper = null)
    {
       Type = type;
+      this.upper = upper;
    }
 
    public IContext? UpperContext(ContextType type)
