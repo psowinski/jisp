@@ -26,19 +26,19 @@ public class Function : IEveluator
       }
    }
 
-   public object Evaluate(IEnumerable<object> seq, Context context)
+   public object Evaluate(IEnumerable<object> seq, IContext context)
    {
       var localContext = CreateContext(seq, context);
       var ret = this.code.EvaluateJisp(localContext);
       return ret;
    }
 
-   private Context CreateContext(IEnumerable<object> seq, Context context)
+   private IContext CreateContext(IEnumerable<object> seq, IContext context)
    {
       if (this.names.Count == 0)
          return context;
 
-      var localContext = new Context(context);
+      var localContext = new IContext(context);
 
       var bindings = this.names.Zip(seq.ToSeq(this.names.Count));
       foreach (var (name, expr) in bindings)

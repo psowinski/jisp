@@ -2,7 +2,7 @@ namespace Jisp.Core;
 
 public class GetCmd : IEveluator
 {
-   public object Evaluate(IEnumerable<object> args, Context context)
+   public object Evaluate(IEnumerable<object> args, IContext context)
    {
       object? collection = null;
       foreach(var expr in args)

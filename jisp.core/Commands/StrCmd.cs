@@ -3,7 +3,7 @@ namespace Jisp.Core;
 
 public class StrCmd : IEveluator
 {
-   public object Evaluate(IEnumerable<object> args, Context context)
+   public object Evaluate(IEnumerable<object> args, IContext context)
    {
       var sb = new StringBuilder();
       foreach (var item in args)

@@ -2,7 +2,7 @@ namespace Jisp.Core;
 
 public class DefCmd : IEveluator
 {
-   public object Evaluate(IEnumerable<object> args, Context context)
+   public object Evaluate(IEnumerable<object> args, IContext context)
    {
       var list = args.ToList(2);
       if (list[0] is not string name)

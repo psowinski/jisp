@@ -1,6 +1,6 @@
 namespace Jisp.Core;
 
-public class AppContext : Context
+public class AppContext : IContext
 {
    public static readonly string ArgsName = "#args";
 
@@ -12,5 +12,5 @@ public class AppContext : Context
    public void AddArgs(object value)
    {
       Add(ArgsName, value);
-   }   
+   }
 }

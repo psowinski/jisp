@@ -2,7 +2,7 @@ namespace Jisp.Core;
 
 public class PrintlnCmd : IEveluator
 {
-   public object Evaluate(IEnumerable<object> args, Context context)
+   public object Evaluate(IEnumerable<object> args, IContext context)
    {
       foreach (var item in args)
          Console.Write(item.EvaluateJisp(context).ToJistr());

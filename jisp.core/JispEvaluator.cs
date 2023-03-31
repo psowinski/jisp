@@ -2,7 +2,7 @@ namespace Jisp.Core;
 
 public static class JispEvaluator
 {
-   public static object EvaluateJisp(this object value, Context context)
+   public static object EvaluateJisp(this object value, IContext context)
    {
       if (value is List<object> list && list.Count > 0)
       {

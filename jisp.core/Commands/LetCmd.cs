@@ -2,7 +2,7 @@ namespace Jisp.Core;
 
 public class LetCmd : IEveluator
 {
-   public object Evaluate(IEnumerable<object> args, Context context)
+   public object Evaluate(IEnumerable<object> args, IContext context)
    {
       var list = args.ToList(2);
       if (list[0] is not IEnumerable<object> bindings)
@@ -15,14 +15,14 @@ public class LetCmd : IEveluator
       return ret;
    }
 
-   private static Context CreateContext(Context context, List<object> bindings)
+   private static IContext CreateContext(IContext context, List<object> bindings)
    {
       if (bindings.Count == 0)
          return context;
       if (bindings.Count % 2 == 1)
          bindings.Add(Nil.Value);
 
-      var localContext = new Context(context);
+      var localContext = new IContext(context);
       for (var idx = 0; idx < bindings.Count; ++idx)
       {
          var expectedName = bindings[idx];

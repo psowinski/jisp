@@ -3,7 +3,7 @@ namespace Jisp.Core;
 [CmdName("empty?")]
 public class IsEmptyCmd : IEveluator
 {
-   public object Evaluate(IEnumerable<object> args, Context context)
+   public object Evaluate(IEnumerable<object> args, IContext context)
    {
       var arg = args.FirstOrNil();
       if (arg == Nil.Value) return true;

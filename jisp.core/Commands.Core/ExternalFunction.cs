@@ -9,7 +9,7 @@ public class ExternalFunction : IEveluator
       this.fun = fun;
    }
 
-   public object Evaluate(IEnumerable<object> args, Context context)
+   public object Evaluate(IEnumerable<object> args, IContext context)
    {
       var inargs = args
          .Select(arg => arg.EvaluateJisp(context))
