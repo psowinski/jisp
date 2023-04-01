@@ -38,7 +38,7 @@ public class Function : IEveluator
       if (this.names.Count == 0)
          return context;
 
-      var localContext = context.CreateLocal();
+      var localContext = context.CreateNextContext();
 
       var bindings = this.names.Zip(seq.ToSeq(this.names.Count));
       foreach (var (name, expr) in bindings)

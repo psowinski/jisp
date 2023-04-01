@@ -22,7 +22,7 @@ public class LetCmd : IEveluator
       if (bindings.Count % 2 == 1)
          bindings.Add(Nil.Value);
 
-      var localContext = context.CreateLocal();
+      var localContext = context.CreateNextContext();
       for (var idx = 0; idx < bindings.Count; ++idx)
       {
          var expectedName = bindings[idx];

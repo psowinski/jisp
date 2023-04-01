@@ -6,5 +6,5 @@ public interface IContext
    IContext? UpperContext(ContextType type);
    void Add(string name, object value);
    object? Find(string name);
-   IContext CreateLocal();
+   IContext CreateNextContext();
 }
