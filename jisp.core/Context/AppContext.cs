@@ -14,7 +14,5 @@ public class AppContext : Context, IAppContext
    }
 
    public IContext CreateNamespace(string name)
-   {
-      return this; //TODO: return decorator
-   }
+      => new NamespacedContext(name, this);
 }
