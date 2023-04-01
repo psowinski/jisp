@@ -1,6 +1,6 @@
 namespace Jisp.Core;
 
-public class AppContext : Context
+public class AppContext : Context, IAppContext
 {
    public static readonly string ArgsName = "#args";
 
@@ -12,7 +12,7 @@ public class AppContext : Context
    {
       Add(ArgsName, value);
    }
-   
+
    public IContext CreateNamespace(string name)
    {
       return this; //TODO: return decorator
