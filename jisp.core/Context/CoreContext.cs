@@ -18,5 +18,10 @@ internal class CoreContext : Context
       var libText = Resources.GetTextFile("jisp.lib.json");
       var libCode = JispParser.Parse(libText);
       libCode.EvaluateJisp(Instance);
-   }   
+   }
+
+   public override IContext CreateLocal()
+   {
+      throw new NotImplementedException();
+   }
 }

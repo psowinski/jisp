@@ -3,12 +3,11 @@ public class Function : IEveluator
 {
    private List<string> names;
    private object code;
-   private IContextFactory factory;
    
    public override string ToString() 
       => $"[function {this.names.ToJistr()} {this.code.ToJistr()}]";
 
-   public Function(IContextFactory factory, object args, object code)
+   public Function(object args, object code)
    {
       try
       {
@@ -18,7 +17,6 @@ public class Function : IEveluator
 
          this.names = names;
          this.code = code;
-         this.factory = factory;
       }
       catch(Exception ex)
       {
@@ -40,7 +38,7 @@ public class Function : IEveluator
       if (this.names.Count == 0)
          return context;
 
-      var localContext = this.factory.CreateLocal(context);
+      var localContext = context.CreateLocal();
 
       var bindings = this.names.Zip(seq.ToSeq(this.names.Count));
       foreach (var (name, expr) in bindings)

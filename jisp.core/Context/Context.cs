@@ -1,6 +1,6 @@
 namespace Jisp.Core;
 
-public class Context : IContext
+public abstract class Context : IContext
 {
    private Dictionary<string, object> data = new ();
    public ContextType Type { get; }
@@ -42,4 +42,6 @@ public class Context : IContext
          return this.upper.Find(name);
       return null;
    }
+
+   public abstract IContext CreateLocal();
 }

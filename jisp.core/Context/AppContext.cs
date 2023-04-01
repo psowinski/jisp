@@ -12,4 +12,11 @@ public class AppContext : Context
    {
       Add(ArgsName, value);
    }
+   
+   public override IContext CreateLocal() => new LocalContext(this);
+
+   public IContext CreateNamespace(string name)
+   {
+      return this; //TODO: return decorator
+   }
 }

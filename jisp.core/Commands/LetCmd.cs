@@ -2,13 +2,6 @@ namespace Jisp.Core;
 
 public class LetCmd : IEveluator
 {
-   private readonly IContextFactory factory;
-
-   public LetCmd(IContextFactory factory)
-   {
-      this.factory = factory;
-   }
-
    public object Evaluate(IEnumerable<object> args, IContext context)
    {
       var list = args.ToList(2);
@@ -29,7 +22,7 @@ public class LetCmd : IEveluator
       if (bindings.Count % 2 == 1)
          bindings.Add(Nil.Value);
 
-      var localContext = this.factory.CreateLocal(context);
+      var localContext = context.CreateLocal();
       for (var idx = 0; idx < bindings.Count; ++idx)
       {
          var expectedName = bindings[idx];
