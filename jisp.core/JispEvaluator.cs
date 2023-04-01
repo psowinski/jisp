@@ -2,6 +2,14 @@ namespace Jisp.Core;
 
 public static class JispEvaluator
 {
+   public static object EvaluateAllJisp(this IEnumerable<object> seq, IContext context)
+   {
+      object last = Nil.Value;
+      foreach (var expr in seq)
+         last = expr.EvaluateJisp(context);
+      return last;
+   }
+
    public static object EvaluateJisp(this object value, IContext context)
    {
       if (value is List<object> list && list.Count > 0)
