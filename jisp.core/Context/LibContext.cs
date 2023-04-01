@@ -1,13 +1,13 @@
 namespace Jisp.Core;
 
-internal class CoreContext : AppContext
+internal class LibContext : AppContext
 {
-   public static CoreContext Instance { get; }
+   public static LibContext Instance { get; }
 
-   static CoreContext()
+   static LibContext()
    {
       var cp = new CommandsProvider();
-      Instance = new CoreContext();
+      Instance = new LibContext();
       Instance.Add(cp.Provide());
 
       var libText = Resources.GetTextFile("jisp.lib.json");
