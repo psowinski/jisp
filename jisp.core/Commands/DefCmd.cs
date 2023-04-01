@@ -8,8 +8,8 @@ public class DefCmd : IEveluator
       if (list[0] is not string name)
          throw new Exception($"ERR: Expected definition name at {args.ToJistr()}");
 
-      var appContext = context.FindAppContext();
-      appContext.Add(name, list[1].EvaluateJisp(context));
+      var value = list[1].EvaluateJisp(context);
+      context.FindAppContext().Add(name, value);
       return Nil.Value;
    }
 }

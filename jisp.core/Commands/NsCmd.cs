@@ -8,12 +8,8 @@ public class NsCmd : IEveluator
       if (arg1 is not string name)
          throw new Exception($"ERR: Expected namespace name at {args.ToJistr()}");
 
-      var appContext = context.FindAppContext();
-      var nsContext = appContext.CreateNamespace(name);
-
-      object last = Nil.Value;
-      foreach (var arg in args.Skip(1))
-         last = arg.EvaluateJisp(nsContext);
+      var nsContext = context.FindAppContext().CreateNamespace(name);
+      var last = args.Skip(1).EvaluateAllJisp(nsContext);
       return last;
   }
 }
