@@ -3,17 +3,10 @@ namespace Jisp.Core;
 public class Context : IContext
 {
    private Dictionary<string, object> data = new();
-   public ContextType Type { get; }
    public IContext? Upper { get; }
 
    protected Context(IContext? upper = null)
    {
-      this.Upper = upper;
-   }
-
-   protected Context(ContextType type, IContext? upper = null)
-   {
-      Type = type;
       this.Upper = upper;
    }
 

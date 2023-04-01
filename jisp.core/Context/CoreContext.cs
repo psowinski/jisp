@@ -4,7 +4,7 @@ internal class CoreContext : Context
 {
    public static CoreContext Instance { get; }
 
-   CoreContext(IEnumerable<(string, IEveluator)> cmds) : base(ContextType.Core)
+   CoreContext(IEnumerable<(string, IEveluator)> cmds)
    {
       foreach (var (name, cmd) in cmds)
          Add(name, cmd);

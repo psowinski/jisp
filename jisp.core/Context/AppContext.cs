@@ -4,7 +4,7 @@ public class AppContext : Context, IAppContext
 {
    public static readonly string ArgsName = "#args";
 
-   public AppContext() : base(ContextType.App, CoreContext.Instance)
+   public AppContext() : base(CoreContext.Instance)
    {
    }
 
