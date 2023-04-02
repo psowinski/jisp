@@ -13,12 +13,19 @@ public class NamespacedContext : IContext
 
    public IContext? Upper => this.appContext.Upper;
 
+   private string Prefix(string name) => $"{this.ns}/{name}";
+
    public void Add(string name, object value) 
-      => this.appContext.Add($"{this.ns}/{name}", value);
+      => this.appContext.Add(Prefix(name), value);
 
    public IContext CreateNextContext()
       => this.appContext.CreateNextContext();
 
    public object? Find(string name)
-      => this.appContext.Find(name);
+   {
+      var ret = this.appContext.Find(Prefix(name));
+      if (ret is null)
+         ret = this.appContext.Find(name);
+      return ret;
+   }
 }
