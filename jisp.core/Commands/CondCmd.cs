@@ -10,9 +10,9 @@ public class CondCmd : IEveluator
       var seq = args.GetEnumerator();
       while(seq.MoveNext())
       {
-         var value = seq.Current;
+         var value = seq.Current.EvaluateJisp(context);
          if (!seq.MoveNext())
-            return value.EvaluateJisp(context);
+            return value;
 
          if (value.ToBool())
             return seq.Current.EvaluateJisp(context);
