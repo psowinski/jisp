@@ -1,4 +1,5 @@
 namespace Jisp.Core;
+
 public class Function : IEveluator
 {
    private List<string> names;

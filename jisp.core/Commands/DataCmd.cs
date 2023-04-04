@@ -6,6 +6,6 @@ public class DataCmd : IEveluator
    public object Evaluate(IEnumerable<object> args, IContext context)
    {
       var ret = args.ToList();
-      return ret;
+      return new DataList(ret);
    }
 }
