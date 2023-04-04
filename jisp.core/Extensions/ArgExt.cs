@@ -17,5 +17,5 @@ public static class ArgExt
       if (value is string text) return text;
 
       throw new ArgumentException($"ERR: Expected string at {value.ToJistr()}");
-   } 
+   }
 }

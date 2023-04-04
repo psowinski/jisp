@@ -1,6 +1,8 @@
 [
    ["do",
       ["println", "a", "b"],
-      ["println", ["#", "c", "d"]]
+      ["debug", true],
+      ["println", ["#", "c", "d"]],
+      ["debug", false]
    ]
 ]
