@@ -20,4 +20,21 @@ public static class EnumerableExt
       var ret = seq.ToSeq(size).ToList();
       return ret;
    }
+
+   public static IEnumerable<(object, object)> SelectPairs(this IEnumerable<object> seq)
+   {
+      var enumerator = seq.GetEnumerator();
+      while(enumerator.MoveNext())
+      {
+         var first = enumerator.Current;
+         var second = enumerator.MoveNext() ? enumerator.Current : Nil.Value;
+         yield return (first, second);
+      }      
+   }
+
+   public static IEnumerable<object> GetRest(this IEnumerator<object> enumerator)
+   {
+      while(enumerator.MoveNext())
+         yield return enumerator.Current;
+   }
 }

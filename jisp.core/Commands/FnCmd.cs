@@ -4,8 +4,17 @@ public class FnCmd : IEveluator
 {
    public object Evaluate(IEnumerable<object> args, IContext context)
    {
-      var list = args.ToList(2);
-      var fn = new Function(list[0], list[1]);
-      return fn;
+      try
+      {
+         var list = args.ToList(2);
+         var names = list[0].RequireStringList();
+         var fn = new Function(names, list[1]);
+         return fn;
+      }
+      catch(Exception ex)
+      {
+         throw new Exception(
+            $"ERR: Invalid function declaration at {args.ToJistr()}", ex);
+      }
    }
 }

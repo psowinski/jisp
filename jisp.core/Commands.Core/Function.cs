@@ -7,46 +7,29 @@ public class Function : IEveluator
    public override string ToString() 
       => $"[function {this.names.ToJistr()} {this.code.ToJistr()}]";
 
-   public Function(object args, object code)
+   public Function(List<string> names, object code)
    {
-      try
-      {
-         var names = (args as IEnumerable<object>)?.Cast<string>().ToList();
-         if (names is null)
-            throw new Exception("Missing parameters list");
-
-         this.names = names;
-         this.code = code;
-      }
-      catch(Exception ex)
-      {
-         throw new Exception(
-            $"ERR: Invalid function declaration at {args.ToJistr()} {code.ToJistr()}",
-            ex);
-      }
+      this.names = names;
+      this.code = code;
    }
 
    public object Evaluate(IEnumerable<object> seq, IContext context)
    {
-      var localContext = CreateContext(seq, context);
+      var localContext = context.CreateNextContext();
+      FillContext(localContext, seq.Select(x => x.EvaluateJisp(context)));
       var ret = this.code.EvaluateJisp(localContext);
       return ret;
    }
 
-   private IContext CreateContext(IEnumerable<object> seq, IContext context)
+   private void FillContext(IContext context, IEnumerable<object> seq)
    {
-      if (this.names.Count == 0)
-         return context;
-
-      var localContext = context.CreateNextContext();
-
-      var bindings = this.names.Zip(seq.ToSeq(this.names.Count));
-      foreach (var (name, expr) in bindings)
+      var enumerator = seq.GetEnumerator();
+      foreach (var name in this.names)
       {
-         var value = expr.EvaluateJisp(context);
-         localContext.Add(name, value);
+         var value = (name.StartsWith("..."))
+                     ? enumerator.GetRest().ToList()
+                     : (enumerator.MoveNext() ? enumerator.Current : Nil.Value);
+         context.Add(name, value);
       }
-
-      return localContext;
    }
 }

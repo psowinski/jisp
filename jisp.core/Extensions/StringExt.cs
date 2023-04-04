@@ -2,6 +2,14 @@ using System.Text;
 namespace Jisp.Core;
 public static class StringExt
 {
+   public static string ToJistr(this object value, int maxLenth)
+   {
+      var str = value.ToJistr();
+      if (str.Length > maxLenth)
+         str = str.Substring(0, maxLenth - 3) + "...";
+      return str;
+   }
+
    public static string ToJistr(this object value)
    {
       if (value is IEnumerable<object> collection)

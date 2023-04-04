@@ -59,5 +59,26 @@
          "n"
       ]
    ],
+
+
+   ["def", "defn", [
+      "fn", ["#name", "@argNames", "@code"],
+         ["def", ["#name"], ["fn", ["@argNames"], ["@code"]]]
+   ]],
+   ["def", "sum1", ["fn", ["a", "b"], ["+", "a", "b"]]],
+   ["defn", "sum2", ["a", "b"], ["+", "a", "b"]],
+   ["defn", "sum3", ["list", "a", "b"], ["list", "+", "a", "b"]],
+   ["sum3", 1, 2],
+
+   [["fn", ["x"], ["str", ["x"], " is here"]], "Tom"],
+   [ ["fn", [], "zwraca stałą"] ],
+   ["fn", [], "println"],
+   ["let", [
+      "wynik", [["fn", [], "to jest wynik zapisany pod let"]]
+   ], ["wynik"]],
+   ["print", ["fn", ["x"], ["str", ["x"], " is here"]]],
+   ["print", [["fn", ["x"], ["str", ["x"], " is here"]], "Tom"], ".\n"],
+
    "this string is the last expresion"
+   
 ]

@@ -1,6 +1,5 @@
 ﻿["do",
-   ["def", "defn", [
-      "fn", ["#name", "#args", "#code"],
-         ["def", ["#name"], ["fn", ["#args"], ["#code"]]]
+   ["defn", "println", ["...args"], [
+      "print", ["apply", "str", ["...args"], "\n"]
    ]]
 ]
