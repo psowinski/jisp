@@ -11,7 +11,7 @@ public class LetCmd : IEveluator
       var localContext = context.CreateNextContext();
       FillContext(localContext, bindings.ToList());
 
-      var last = args.Skip(1).EvaluateAllJisp(localContext);
+      var last = args.Skip(1).EvaluateJispSeq(localContext);
       return last;
    }
 

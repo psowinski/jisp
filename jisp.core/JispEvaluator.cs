@@ -29,7 +29,7 @@ public static class JispEvaluator
       }
       return value;
    }
-   public static object EvaluateAllJisp(this IEnumerable<object> seq, IContext context)
+   public static object EvaluateJispSeq(this IEnumerable<object> seq, IContext context)
    {
       object last = Nil.Value;
       foreach (var expr in seq)

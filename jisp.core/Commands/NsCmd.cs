@@ -6,7 +6,7 @@ public class NsCmd : IEveluator
    {
       var name = args.FirstOrNil().RequireString();
       var nsContext = context.FindAppContext().CreateNamespace(name);
-      var last = args.Skip(1).EvaluateAllJisp(nsContext);
+      var last = args.Skip(1).EvaluateJispSeq(nsContext);
       return last;
   }
 }
