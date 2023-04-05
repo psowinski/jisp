@@ -18,12 +18,15 @@ public static class JispEvaluator
          
          if (element is IEveluator eval)
          {
-            var idx = Debug ? ++DebugIdx : 0;
-            if (Debug) Console.WriteLine($"DBG({idx}): {list.ToJistr(40).ToLiteral()} => ");
-            
+            var debug = Debug;
+            var idx = debug ? ++DebugIdx : 0;
+
+            if (debug) Console.WriteLine($"DBG({idx}): {list.ToJistr(40).ToLiteral()} => ");
+
             var ret = eval.Evaluate(list.Skip(1), context);
-            
-            if (Debug && idx > 0) Console.WriteLine($"DBG({idx}): => {ret.ToJistr().ToLiteral()}");
+
+            if (debug) Console.WriteLine($"DBG({idx}): => {ret.ToJistr().ToLiteral()}");
+
             return ret;
          }
          
@@ -31,7 +34,7 @@ public static class JispEvaluator
       }
       return value;
    }
-   
+
    public static object EvaluateJispSeq(this IEnumerable<object> seq, IContext context)
    {
       object last = Nil.Value;

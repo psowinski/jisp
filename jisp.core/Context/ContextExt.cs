@@ -10,10 +10,4 @@ public static class ContextExt
          return context.Upper.FindAppContext();
       throw new ArgumentException("ERR: Missing app context.");
    }
-
-   public static void Add(this IContext context, IEnumerable<(string, IEveluator)> cmds)
-   {
-      foreach (var (name, cmd) in cmds)
-         context.Add(name, cmd);
-   }
 }
