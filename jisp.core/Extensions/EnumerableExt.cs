@@ -8,6 +8,13 @@ public static class EnumerableExt
       if (first is null) return Nil.Value;
       return first;
    }
+   
+   public static object LastOrNil<T>(this IEnumerable<T> value)
+   {
+      var first = value.LastOrDefault();
+      if (first is null) return Nil.Value;
+      return first;
+   }
 
    public static IEnumerable<object> ToSeq(this IEnumerable<object> seq, int size)
    {

@@ -21,6 +21,13 @@ public static class StringExt
       return value.ToString() ?? string.Empty;
    }
 
+   public static decimal ToJinum(this object value)
+   {
+      if (value is decimal num)
+         return num;
+      throw new ArgumentException($"ERR: Expected number at {value.ToJistr()}");
+   }   
+
    private static string MapToString(IDictionary<string, object> dictionary)
    {
       var sb = new StringBuilder();
