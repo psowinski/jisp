@@ -29,11 +29,10 @@ public static class CompareExt
       var cr = aSeq.Count.CompareTo(bSeq.Count);
       if (cr != 0) return cr;
 
-      var pairs = aSeq.Zip(bSeq);
       for (var idx = 0; idx < aSeq.Count; ++idx)
       {
-         var arga = aSeq[idx] ?? throw new Exception($"ERR: null at {aSeq.ToJistr()}");
-         var argb = bSeq[idx] ?? throw new Exception($"ERR: null at {bSeq.ToJistr()}");
+         var arga = aSeq[idx] ?? throw new ArgumentNullException($"ERR: null at {aSeq.ToJistr()}");
+         var argb = bSeq[idx] ?? throw new ArgumentNullException($"ERR: null at {bSeq.ToJistr()}");
 
          cr = arga.JispCompare(argb);
          if (cr != 0) return cr;
@@ -51,10 +50,10 @@ public static class CompareExt
 
       foreach (var (key, x) in aDict)
       {
-         if (x is null) throw new Exception($"ERR: null at key {key}");
+         if (x is null) throw new ArgumentNullException($"ERR: null at key {key}");
          if (!bDict.TryGetValue(key, out var y))
          {
-            if (y is null) throw new Exception($"ERR: null at key {key}");
+            if (y is null) throw new ArgumentNullException($"ERR: null at key {key}");
             cr = x.JispCompare(y);
             if (cr != 0) return cr;
          }

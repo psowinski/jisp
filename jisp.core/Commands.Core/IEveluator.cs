@@ -2,5 +2,5 @@ namespace Jisp.Core;
 
 public interface IEveluator
 {
-   object Evaluate(IEnumerable<object> collection, IContext context);
+   object Evaluate(IEnumerable<object> args, IContext context);
 }

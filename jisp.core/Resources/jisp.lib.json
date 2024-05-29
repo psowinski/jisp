@@ -1,5 +1,6 @@
 ﻿["do",
    ["defn", "println", ["...args"], [
       "print", ["apply", "str", ["...args"], "\n"]
-   ]]
+   ]],
+   ["defn", "sum", ["x", "y"], ["+", ["x"], ["y"]]]
 ]

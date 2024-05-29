@@ -11,9 +11,9 @@ public static class EnumerableExt
    
    public static object LastOrNil<T>(this IEnumerable<T> value)
    {
-      var first = value.LastOrDefault();
-      if (first is null) return Nil.Value;
-      return first;
+      var last = value.LastOrDefault();
+      if (last is null) return Nil.Value;
+      return last;
    }
 
    public static IEnumerable<object> ToSeq(this IEnumerable<object> seq, int size)

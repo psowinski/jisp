@@ -2,10 +2,10 @@ namespace Jisp.Core;
 
 public class Context : IContext
 {
-   private Dictionary<string, object> data = new();
+   private readonly Dictionary<string, object> data = new();
    public IContext? Upper { get; }
 
-   protected Context(IContext? upper = null)
+   public Context(IContext? upper = null)
    {
       this.Upper = upper;
    }
@@ -18,7 +18,7 @@ public class Context : IContext
    public void Add(string name, object value)
    {
       if (!TryAdd(name, value))
-         throw new Exception($"ERR: Object {name} already exists in current context");
+         throw new ArgumentException($"ERR: Object {name} already exists in current context");
    }
 
    public object? Find(string name)
@@ -29,6 +29,4 @@ public class Context : IContext
          return this.Upper.Find(name);
       return null;
    }
-
-   public IContext CreateNextContext() => new Context(this);
 }

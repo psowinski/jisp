@@ -5,5 +5,4 @@ public interface IContext
    IContext? Upper { get; }
    void Add(string name, object value);
    object? Find(string name);
-   IContext CreateNextContext();
 }

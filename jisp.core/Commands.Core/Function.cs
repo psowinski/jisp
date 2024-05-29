@@ -16,7 +16,7 @@ public class Function : IEveluator
 
    public object Evaluate(IEnumerable<object> seq, IContext context)
    {
-      var localContext = context.CreateNextContext();
+      var localContext = context.FindModuleContext().CreateNextContext();
       FillContext(localContext, seq.Select(x => x.EvaluateJisp(context)));
       var ret = this.code.EvaluateJisp(localContext);
       return ret;

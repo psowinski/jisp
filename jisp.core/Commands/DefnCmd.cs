@@ -10,7 +10,8 @@ public class DefnCmd : IEveluator
       try
       {
          var ret = this.fn.Evaluate(args.Skip(1), context);
-         this.def.Evaluate(new [] {args.FirstOrNil(), ret}, context);
+         var name = args.FirstOrNil();
+         this.def.Evaluate(new [] {name, ret}, context);
          return Nil.Value;
       }
       catch (Exception ex)
